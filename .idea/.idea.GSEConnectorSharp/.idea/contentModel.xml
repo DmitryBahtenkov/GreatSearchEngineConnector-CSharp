@@ -19,8 +19,15 @@
           <e p="ApiRequest.cs" t="Include" />
         </e>
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Exceptions" t="Include">
+          <e p="GSEException.cs" t="Include" />
+        </e>
         <e p="GSEConnectorSharp.csproj" t="IncludeRecursive" />
-        <e p="IndexRepository.cs" t="Include" />
+        <e p="Models" t="Include">
+          <e p="DocumentModel.cs" t="Include" />
+          <e p="IndexModel.cs" t="Include" />
+          <e p="ResponseModel.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">
@@ -28,13 +35,21 @@
             </e>
           </e>
         </e>
-        <e p="SearchOperations.cs" t="Include" />
+        <e p="Operations" t="Include">
+          <e p="IndexOperations.cs" t="Include" />
+          <e p="OperationsBase.cs" t="Include" />
+          <e p="SearchOperations.cs" t="Include" />
+        </e>
       </e>
       <e p="GSEConnectorSharp.sln" t="IncludeFlat" />
       <e p="GSEConnectorSharpTests" t="IncludeRecursive">
         <e p="ApiClientTests.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="GSEConnectorSharpTests.csproj" t="IncludeRecursive" />
+        <e p="IndexOperationsTests.cs" t="Include" />
+        <e p="Models" t="Include">
+          <e p="TestModel.cs" t="Include" />
+        </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
             <e p="netcoreapp3.1" t="Include">

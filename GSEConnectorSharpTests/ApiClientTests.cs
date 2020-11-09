@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using GSEConnectorSharp;
+using GSEConnectorSharpTests.Models;
 using NUnit.Framework;
 
 namespace GSEConnectorSharpTests
@@ -10,13 +11,21 @@ namespace GSEConnectorSharpTests
         [SetUp]
         public void Setup()
         {
-            _apiClient = new ApiClient();
         }
 
         [Test]
-        public async Task Test1()
+        public async Task UseDefaultConnectionTest()
         {
+            _apiClient = new ApiClient();
             Assert.True(await _apiClient.TestConnection());
         }
+        
+        [Test]
+        public async Task UseCustomConnectionTest()
+        {
+            _apiClient = new ApiClient("https://localhost:5001");
+            Assert.True(await _apiClient.TestConnection());
+        }
+        
     }
 }

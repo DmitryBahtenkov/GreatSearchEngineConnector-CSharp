@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Net.Security;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
+using GSEConnectorSharp.Exceptions;
 
 namespace GSEConnectorSharp
 {
@@ -37,14 +38,14 @@ namespace GSEConnectorSharp
         {
             _host = host;
             _port = port;
-            Url = useSsl ? $"https://{host}:{port}" : $"http://{host}:{port}";
+            Url = useSsl ? $"https://{host}:{port}/" : $"http://{host}:{port}/";
             _apiRequest = new ApiRequest();
         }
 
         public async Task<bool> TestConnection()
         {
             var response = await _apiRequest.SendGetAndParseString(Url);
-            return response is "hello";
+            return response.IsSuccess;
         }
     }
 }
