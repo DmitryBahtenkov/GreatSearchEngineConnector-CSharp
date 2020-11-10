@@ -6,5 +6,7 @@
     &lt;TestId&gt;NUnit3x::8A052EAA-37F3-4F29-A876-E6E5E86755B1::.NETCoreApp,Version=v3.1::GSEConnectorSharpTests.ApiClientTests.CreateIndexTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::8A052EAA-37F3-4F29-A876-E6E5E86755B1::.NETCoreApp,Version=v3.1::GSEConnectorSharpTests.IndexOperationsTests.GetAllTest&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::8A052EAA-37F3-4F29-A876-E6E5E86755B1::.NETCoreApp,Version=v3.1::GSEConnectorSharpTests.IndexOperationsTests.GetByIdTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8A052EAA-37F3-4F29-A876-E6E5E86755B1::.NETCoreApp,Version=v3.1::GSEConnectorSharpTests.OperationsTests.SearchOperationTests.FulltextSearchTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::8A052EAA-37F3-4F29-A876-E6E5E86755B1::.NETCoreApp,Version=v3.1::GSEConnectorSharpTests.OperationsTests.IndexOperationsTests.CreateObjectTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

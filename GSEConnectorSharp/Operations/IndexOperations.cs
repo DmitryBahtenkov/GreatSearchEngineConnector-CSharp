@@ -16,7 +16,7 @@ namespace GSEConnectorSharp.Operations
 
         public async Task CreateIndexAndAddObject<T>(IndexModel indexModel, T obj)
         {
-            var uri = Url + indexModel;
+            var uri = Url + indexModel + "/add";
             var response = await ApiRequest.SendPostJsonWithoutResponse(uri, obj);
             if(!response.IsSuccess)
                 throw new GSEException(response.ErrorMessage);

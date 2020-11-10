@@ -27,6 +27,7 @@
           <e p="DocumentModel.cs" t="Include" />
           <e p="IndexModel.cs" t="Include" />
           <e p="ResponseModel.cs" t="Include" />
+          <e p="SearchModel.cs" t="Include" />
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
@@ -46,7 +47,6 @@
         <e p="ApiClientTests.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
         <e p="GSEConnectorSharpTests.csproj" t="IncludeRecursive" />
-        <e p="IndexOperationsTests.cs" t="Include" />
         <e p="Models" t="Include">
           <e p="TestModel.cs" t="Include" />
         </e>
@@ -56,6 +56,10 @@
               <e p="GSEConnectorSharpTests.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="OperationsTests" t="Include">
+          <e p="IndexOperationsTests.cs" t="Include" />
+          <e p="SearchOperationTests.cs" t="Include" />
         </e>
       </e>
       <e p="packages" t="ExcludeRecursive" />
