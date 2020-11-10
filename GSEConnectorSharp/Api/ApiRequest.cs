@@ -1,5 +1,5 @@
-﻿using System;
-using System.Net;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,6 +53,19 @@ namespace GSEConnectorSharp
             }
             var obj = JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
             return new ResponseModel<T>(obj);
+        }
+        
+        public async Task<ResponseModel<List<T>>> SendGetAndParserArray<T>(string uri)
+        {
+            var response = await _httpClient.GetAsync(uri);
+            if (!response.IsSuccessStatusCode)
+            {
+                return new ResponseModel<List<T>>($"Request return not OK status code: {response.StatusCode}");
+            }
+            var array = JsonConvert.DeserializeObject<string[]>(await response.Content.ReadAsStringAsync());
+            //десериализуем каждый элемент по отдельности, так как оно не хочет конвертироваться в массив :(
+            var result = array.Select(JsonConvert.DeserializeObject<T>).ToList();
+            return new ResponseModel<List<T>>(result);
         }
     }
 }
