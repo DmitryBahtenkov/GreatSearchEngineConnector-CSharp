@@ -25,7 +25,7 @@ namespace GSEConnectorSharp.Operations
         public async Task<IEnumerable<DocumentModel>> GetAllFromIndex(IndexModel indexModel)
         {
             var uri = Url + indexModel + "/all";
-            var response = await ApiRequest.SendGetAndParserArray<DocumentModel>(uri);
+            var response = await ApiRequest.SendGetAndParseObject<List<DocumentModel>>(uri);
             if(!response.IsSuccess)
                 throw new GSEException(response.ErrorMessage);
             return response.Content;

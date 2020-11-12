@@ -59,35 +59,20 @@ namespace GSEConnectorSharp
             return new ResponseModel<T>(obj);
         }
 
-        public async Task<ResponseModel<List<T>>> SendGetAndParserArray<T>(string uri)
+        public async Task<ResponseModel<List<TResult>>> SendGetWithJsonAndParseObject<TItem, TResult>(string uri, TItem item)
         {
-            var response = await _httpClient.GetAsync(uri);
-            if (!response.IsSuccessStatusCode)
+            var request = new HttpRequestMessage(HttpMethod.Get, uri)
             {
-                return new ResponseModel<List<T>>($"Request return not OK status code: {response.StatusCode}");
-            }
+                Content = new StringContent(JsonConvert.SerializeObject(item), Encoding.Default, "application/json")
+            };
 
-            var array = JsonConvert.DeserializeObject<string[]>(await response.Content.ReadAsStringAsync());
-            //десериализуем каждый элемент по отдельности, так как оно не хочет конвертироваться в массив :(
-            var result = array.Select(JsonConvert.DeserializeObject<T>).ToList();
-            return new ResponseModel<List<T>>(result);
-        }
-
-        public async Task<ResponseModel<List<TResult>>> SendGetWithJsonAndParseArray<TItem, TResult>(string uri, TItem item)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, uri);
-            request.Content = new StringContent(JsonConvert.SerializeObject(item), Encoding.Default, "application/json");
-            
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
                 return new ResponseModel<List<TResult>>($"Request return not OK status code: {response.StatusCode}");
             }
-
-            //todo: доделать десериализацию
-            var s = await response.Content.ReadAsStringAsync();
-            var array = JsonConvert.DeserializeObject<List<JObject>>(s);
-            var result = array.Select(x=> JsonConvert.DeserializeObject<TResult>(x.ToString())).ToList();
+            
+            var result = JsonConvert.DeserializeObject<List<TResult>>(await response.Content.ReadAsStringAsync());
             return new ResponseModel<List<TResult>>(result);
         }
     }

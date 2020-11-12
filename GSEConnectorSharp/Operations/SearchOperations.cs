@@ -25,7 +25,7 @@ namespace GSEConnectorSharp
         public async Task<List<DocumentModel>> FulltextSearch(IndexModel indexModel, SearchModel searchModel)
         {
             var uri = Url + "fulltext/" + indexModel;
-            var response = await ApiRequest.SendGetWithJsonAndParseArray<SearchModel, DocumentModel>(uri, searchModel);
+            var response = await ApiRequest.SendGetWithJsonAndParseObject<SearchModel, DocumentModel>(uri, searchModel);
             if(!response.IsSuccess)
                 throw new GSEException(response.ErrorMessage);
             return response.Content;
@@ -40,7 +40,7 @@ namespace GSEConnectorSharp
         public async Task<List<DocumentModel>> MatchSearch(IndexModel indexModel, SearchModel searchModel)
         {
             var uri = Url + "match/" + indexModel;
-            var response = await ApiRequest.SendGetWithJsonAndParseArray<SearchModel, DocumentModel>(uri, searchModel);
+            var response = await ApiRequest.SendGetWithJsonAndParseObject<SearchModel, DocumentModel>(uri, searchModel);
             if(!response.IsSuccess)
                 throw new GSEException(response.ErrorMessage);
             return response.Content;

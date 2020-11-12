@@ -12,7 +12,7 @@ namespace GSEConnectorSharp.Models
         /// <summary>
         /// Тело документа
         /// </summary>
-        public JObject Value { get; set; }
+        public JValue Value { get; set; }
 
         public override string ToString()
         {
