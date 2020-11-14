@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using GSEConnectorSharp;
-using GSEConnectorSharpTests.Models;
 using NUnit.Framework;
 
 namespace GSEConnectorSharpTests
