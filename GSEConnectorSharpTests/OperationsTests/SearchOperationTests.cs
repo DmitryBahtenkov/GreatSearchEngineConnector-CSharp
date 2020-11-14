@@ -27,6 +27,14 @@ namespace GSEConnectorSharpTests.OperationsTests
         public async Task FulltextSearchTest()
         {
             var result = await _searchOperations.FulltextSearch(_indexModel, _searchModel);
+            Assert.NotNull(result);
+        }
+        
+        [Test]
+        public async Task MatchSearchTest()
+        {
+            var result = await _searchOperations.MatchSearch(_indexModel, _searchModel);
+            Assert.NotNull(result);
         }
     }
 }

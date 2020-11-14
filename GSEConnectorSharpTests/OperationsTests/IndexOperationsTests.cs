@@ -43,7 +43,6 @@ namespace GSEConnectorSharpTests.OperationsTests
                     Name = "AzaZ",
                     Text = "ReqBin API Tester is a free online API"
                 });
-                //Assert.Pass();
             }
             catch(Exception e)
             {
