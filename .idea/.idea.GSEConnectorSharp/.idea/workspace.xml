@@ -9,14 +9,28 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a45bd4e9-ca05-4d12-b395-5f6b813c99ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GSEConnectorSharp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GSEConnectorSharp/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GSEConnectorSharpTests/OperationsTests/IndexOperationsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GSEConnectorSharpTests/OperationsTests/IndexOperationsTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GSEConnectorSharpTests/OperationsTests/SearchOperationTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GSEConnectorSharpTests/OperationsTests/SearchOperationTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GSEConnectorSharp/Operations/HelloOperations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GSEConnectorSharp/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GSEConnectorSharp/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GSEConnectorSharp/Api/ApiClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GSEConnectorSharp/Api/ApiClient.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +56,6 @@
         <option value="$PROJECT_DIR$/GSEConnectorSharpTests/ApiClientTests.cs" />
         <option value="$PROJECT_DIR$/GSEConnectorSharp/Models/ResponseModel.cs" />
         <option value="$PROJECT_DIR$/GSEConnectorSharp/Exceptions/GSEException.cs" />
-        <option value="$PROJECT_DIR$/GSEConnectorSharp/Api/ApiClient.cs" />
         <option value="$PROJECT_DIR$/GSEConnectorSharpTests/IndexOperationsTests.cs" />
         <option value="$PROJECT_DIR$/GSEConnectorSharp/Models/SearchModel.cs" />
         <option value="$PROJECT_DIR$/GSEConnectorSharp/Operations/IndexOperations.cs" />
@@ -51,6 +64,8 @@
         <option value="$PROJECT_DIR$/GSEConnectorSharp/Operations/SearchOperations.cs" />
         <option value="$PROJECT_DIR$/GSEConnectorSharpTests/OperationsTests/IndexOperationsTests.cs" />
         <option value="$PROJECT_DIR$/GSEConnectorSharpTests/OperationsTests/SearchOperationTests.cs" />
+        <option value="$PROJECT_DIR$/GSEConnectorSharp/Operations/HelloOperations.cs" />
+        <option value="$PROJECT_DIR$/GSEConnectorSharp/Api/ApiClient.cs" />
       </list>
     </option>
   </component>
@@ -101,6 +116,7 @@
       <workItem from="1605165589665" duration="368000" />
       <workItem from="1605166611427" duration="290000" />
       <workItem from="1605166992881" duration="1952000" />
+      <workItem from="1605350497299" duration="314000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1604912078182</created>
@@ -144,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605166624780</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Edit tests">
+      <created>1605350509122</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605350509122</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,7 +195,8 @@
     <MESSAGE value="final IndexOperations.cs" />
     <MESSAGE value="add SearchOperations.cs" />
     <MESSAGE value="Fix serialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix serialization" />
+    <MESSAGE value="Edit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit tests" />
   </component>
   <component name="WindowStateProjectService">
     <state width="399" height="646" key="DebuggerActiveHint" timestamp="1604991725964">

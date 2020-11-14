@@ -17,14 +17,14 @@ namespace GSEConnectorSharpTests
         public async Task UseDefaultConnectionTest()
         {
             _apiClient = new ApiClient();
-            Assert.True(await _apiClient.TestConnection());
+            Assert.True(await _apiClient.HelloOperations.TestConnection());
         }
         
         [Test]
         public async Task UseCustomConnectionTest()
         {
             _apiClient = new ApiClient("https://localhost:5001");
-            Assert.True(await _apiClient.TestConnection());
+            Assert.True(await _apiClient.HelloOperations.TestConnection());
         }
         
     }

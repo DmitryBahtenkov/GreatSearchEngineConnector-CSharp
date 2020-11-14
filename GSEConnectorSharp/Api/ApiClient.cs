@@ -7,6 +7,7 @@ using System.Net.Security;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using GSEConnectorSharp.Exceptions;
+using GSEConnectorSharp.Operations;
 
 namespace GSEConnectorSharp
 {
@@ -15,17 +16,22 @@ namespace GSEConnectorSharp
         public string Url { get; set; }
         private readonly string _host;
         private readonly int _port;
-
-        private readonly ApiRequest _apiRequest;
+        
+        public HelloOperations HelloOperations { get; set; }
+        public IndexOperations IndexOperations { get; set; }
+        public SearchOperations SearchOperations { get; set; }
 
         /// <summary>
-        /// Use custom connection
+        /// Use custom connection, for example: https://example.com:5002
         /// </summary>
         /// <param name="connectionString"></param>
         public ApiClient(string connectionString)
         {
             Url = connectionString;
-            _apiRequest = new ApiRequest();
+            
+            HelloOperations = new HelloOperations(Url);
+            IndexOperations = new IndexOperations(Url);
+            SearchOperations = new SearchOperations(Url);
         }
 
         /// <summary>
@@ -39,13 +45,10 @@ namespace GSEConnectorSharp
             _host = host;
             _port = port;
             Url = useSsl ? $"https://{host}:{port}/" : $"http://{host}:{port}/";
-            _apiRequest = new ApiRequest();
-        }
-
-        public async Task<bool> TestConnection()
-        {
-            var response = await _apiRequest.SendGetAndParseString(Url);
-            return response.IsSuccess;
+            
+            HelloOperations = new HelloOperations(Url);
+            IndexOperations = new IndexOperations(Url);
+            SearchOperations = new SearchOperations(Url);
         }
     }
 }

@@ -37,6 +37,7 @@
           </e>
         </e>
         <e p="Operations" t="Include">
+          <e p="HelloOperations.cs" t="Include" />
           <e p="IndexOperations.cs" t="Include" />
           <e p="OperationsBase.cs" t="Include" />
           <e p="SearchOperations.cs" t="Include" />
