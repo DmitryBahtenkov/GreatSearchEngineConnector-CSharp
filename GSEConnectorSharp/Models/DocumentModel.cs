@@ -1,4 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿
+
+using System.Reflection.Emit;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 
 namespace GSEConnectorSharp.Models
@@ -8,11 +14,12 @@ namespace GSEConnectorSharp.Models
         /// <summary>
         /// Id для доступа к документам
         /// </summary>
-        public long Id { get; set; }
+        public int Id { get; set; }
+        
         /// <summary>
         /// Тело документа
         /// </summary>
-        public JValue Value { get; set; }
+        public JToken Value { get; set; }
 
         public override string ToString()
         {

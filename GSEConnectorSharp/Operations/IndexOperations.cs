@@ -22,10 +22,10 @@ namespace GSEConnectorSharp.Operations
                 throw new GSEException(response.ErrorMessage);
         }
 
-        public async Task<IEnumerable<DocumentModel>> GetAllFromIndex(IndexModel indexModel)
+        public async Task<List<DocumentModel>> GetAllFromIndex(IndexModel indexModel)
         {
             var uri = Url + indexModel + "/all";
-            var response = await ApiRequest.SendGetAndParseObject<List<DocumentModel>>(uri);
+            var response = await ApiRequest.SendGetAndParseArray<DocumentModel>(uri);
             if(!response.IsSuccess)
                 throw new GSEException(response.ErrorMessage);
             return response.Content;
@@ -38,6 +38,23 @@ namespace GSEConnectorSharp.Operations
             if(!response.IsSuccess)
                 throw new GSEException(response.ErrorMessage);
             return response.Content;
+        }
+
+        public async Task<List<string>> GetIndexes(string dbName)
+        {
+            var uri = Url + dbName;
+            var response = await ApiRequest.SendGetAndParseObject<List<string>>(uri);
+            if(!response.IsSuccess)
+                throw new GSEException(response.ErrorMessage);
+            return response.Content;
+        }
+
+        public async Task RenameIndex(IndexModel indexModel, string newName)
+        {
+            var uri = Url + indexModel + "/rename?name=" + newName;
+            var response = await ApiRequest.SendPut(uri);
+            if(!response.IsSuccess)
+                throw new GSEException(response.ErrorMessage);
         }
     }
 }

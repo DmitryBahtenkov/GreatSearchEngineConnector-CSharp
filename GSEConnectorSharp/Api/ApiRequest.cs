@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using GSEConnectorSharp.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace GSEConnectorSharp
 {
@@ -55,11 +56,30 @@ namespace GSEConnectorSharp
                 return new ResponseModel<T>($"Request return not OK status code: {response.StatusCode}");
             }
 
-            var obj = JsonConvert.DeserializeObject<T>(await response.Content.ReadAsStringAsync());
+            var str = await response.Content.ReadAsStringAsync();
+            var obj = JsonConvert.DeserializeObject<T>(str);
             return new ResponseModel<T>(obj);
         }
+        
+        public async Task<ResponseModel<List<T>>> SendGetAndParseArray<T>(string uri)
+        {
+            var response = await _httpClient.GetAsync(uri);
+            if (!response.IsSuccessStatusCode)
+            {
+                return new ResponseModel<List<T>>($"Request return not OK status code: {response.StatusCode}");
+            }
 
-        public async Task<ResponseModel<List<TResult>>> SendGetWithJsonAndParseObject<TItem, TResult>(string uri, TItem item)
+            var str = await response.Content.ReadAsStringAsync();
+            var array = JsonConvert.DeserializeObject<string[]>(str);
+            var result = new List<T>();
+            foreach (var item in array)
+            {
+                result.Add(JsonConvert.DeserializeObject<T>(item));
+            }
+            return new ResponseModel<List<T>>(result);
+        }
+
+        public async Task<ResponseModel<TResult>> SendGetWithJsonAndParseObject<TItem, TResult>(string uri, TItem item)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, uri)
             {
@@ -69,11 +89,19 @@ namespace GSEConnectorSharp
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                return new ResponseModel<List<TResult>>($"Request return not OK status code: {response.StatusCode}");
+                return new ResponseModel<TResult>($"Request return not OK status code: {response.StatusCode}");
             }
             
-            var result = JsonConvert.DeserializeObject<List<TResult>>(await response.Content.ReadAsStringAsync());
-            return new ResponseModel<List<TResult>>(result);
+            var result = JsonConvert.DeserializeObject<TResult>(await response.Content.ReadAsStringAsync());
+            return new ResponseModel<TResult>(result);
+        }
+        
+        public async Task<ResponseModel<string>> SendPut(string uri)
+        {
+            var response = await _httpClient.PutAsync(uri, null);
+            return !response.IsSuccessStatusCode 
+                ? new ResponseModel<string>(errorMessage: $"Request return not OK status code: {response.StatusCode}") 
+                : new ResponseModel<string>(content:"Ok");
         }
     }
 }

@@ -23,15 +23,31 @@ namespace GSEConnectorSharpTests.OperationsTests
         [Test]
         public async Task GetAllTest()
         {
-            var result = await _apiClient.IndexOperations.GetAllFromIndex(_indexModel);
-            Assert.NotNull(result);
+            try
+            {
+                var result = await _apiClient.IndexOperations.GetAllFromIndex(_indexModel);
+                Assert.NotNull(result);
+            }
+            catch(Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
+
         }
         
         [Test]
         public async Task GetByIdTest()
         {
-            var result = await _apiClient.IndexOperations.GetByIdFromIndex(_indexModel, 0);
-            Assert.NotNull(result);
+            try
+            {
+                var result = await _apiClient.IndexOperations.GetByIdFromIndex(_indexModel, 0);
+                Assert.NotNull(result);
+            }
+            catch(Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
+
         }
 
         [Test]
@@ -44,6 +60,33 @@ namespace GSEConnectorSharpTests.OperationsTests
                     Name = "AzaZ",
                     Text = "ReqBin API Tester is a free online API"
                 });
+            }
+            catch(Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
+        }
+
+        [Test]
+        public async Task RenameIndexTest()
+        {
+            try
+            {
+                await _apiClient.IndexOperations.RenameIndex(_indexModel, "uuu");
+            }
+            catch(Exception e)
+            {
+                Assert.Fail(e.Message);
+            }
+        }
+        
+        [Test]
+        public async Task GetIndexesTest()
+        {
+            try
+            {
+                var result = await _apiClient.IndexOperations.GetIndexes("test");
+                Assert.IsNotEmpty(result);
             }
             catch(Exception e)
             {
